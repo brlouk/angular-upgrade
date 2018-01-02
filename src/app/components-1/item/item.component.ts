@@ -1,3 +1,5 @@
+import * as angular from 'angular';
+
 export let ItemComponent = {
   template: `<p>Item component: <strong>{{ $ctrl.title }}</strong></p>`,
   bindings: {
@@ -9,3 +11,6 @@ export let ItemComponent = {
     };
   }
 };
+
+angular.module('ng1App', [])
+  .component('ng1Item', ItemComponent);
