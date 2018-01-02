@@ -1,45 +1,38 @@
 /**
- * This file imports the third party library dependencies, then creates the angular module "demo"
- * and exports it.
+ * THIS FILE IMPORTS THE THIRD PARTY LIBRARY DEPENDENCIES, THEN CREATES THE ANGULAR MODULE "DEMO"
+ * AND EXPORTS IT.
  */
 
-// External dependencies
+// EXTERNAL DEPENDENCIES
 import * as angular from 'angular';
 import uiRouter from '@uirouter/angularjs';
 import { upgradeModule } from '@uirouter/angular-hybrid';
-
-// Feature Modules
-// import { globalModule } from './global/index';
-// import { homeModule } from "./home/index";
-// import { mymessagesModule } from './mymessages/index';
-import { mainModule } from './components/index';
 import 'angular-ui-bootstrap';
 
-// Create the angular 1 module "demo".
+// FEATURE MODULES
+import { mainModule } from './components/index';
+
+// CREATE THE ANGULAR 1 MODULE
 //
-// Since it is exported, other parts of the application (in other files) can then import it and register things.
-// In bootstrap.js, the module is imported, and the components, services, and states are registered.
+// SINCE IT IS EXPORTED, OTHER PARTS OF THE APPLICATION (IN OTHER FILES) CAN THEN IMPORT IT AND REGISTER THINGS.
+// IN BOOTSTRAP.JS, THE MODULE IS IMPORTED, AND THE COMPONENTS, SERVICES, AND STATES ARE REGISTERED.
 export const AppJsModule = angular.module('app', [
   uiRouter,
   upgradeModule.name,
   'ui.bootstrap',
-  // uiBootstrap.name,
-  // homeModule.name,
-  // globalModule.name,
-  // mymessagesModule.name,
   mainModule.name
 ]);
 
-// Apply some global configuration...
+// APPLY SOME GLOBAL CONFIGURATION...
 
-// If the user enters a URL that doesn't match any known URL (state), send them to `/welcome`
-const otherwiseConfigBlock = ['$urlRouterProvider', $urlRouterProvider => { $urlRouterProvider.otherwise("/login"); }];
+// IF THE USER ENTERS A URL THAT DOESN'T MATCH ANY KNOWN URL (STATE), SEND THEM TO `/LOGIN`
+const otherwiseConfigBlock = ['$urlRouterProvider', $urlRouterProvider => { $urlRouterProvider.otherwise('/login'); }];
 AppJsModule.config(otherwiseConfigBlock);
 
-// Enable tracing of each TRANSITION... (check the javascript console)
+// ENABLE TRACING OF EACH TRANSITION... (CHECK THE JAVASCRIPT CONSOLE)
 
-// This syntax `$trace.enable(1)` is an alternative to `$trace.enable("TRANSITION")`.
-// Besides "TRANSITION", you can also enable tracing for : "RESOLVE", "HOOK", "INVOKE", "UIVIEW", "VIEWCONFIG"
+// THIS SYNTAX `$TRACE.ENABLE(1)` IS AN ALTERNATIVE TO `$TRACE.ENABLE("TRANSITION")`.
+// BESIDES "TRANSITION", YOU CAN ALSO ENABLE TRACING FOR : "RESOLVE", "HOOK", "INVOKE", "UIVIEW", "VIEWCONFIG"
 const traceRunBlock = ['$trace', $trace => { $trace.enable(1); }];
 AppJsModule.run(traceRunBlock);
 

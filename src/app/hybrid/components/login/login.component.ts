@@ -19,13 +19,10 @@ function LoginController($log, $state, loginService) {
     // FUNCTIONS
     ctrl.doLogin = function () {
         loginService.login().then(function () {
-            $state.go('home2');
+            $state.go('home');
         });
-    }
+    };
 }
-
-// LoginController.$inject = ['$log', '$state', 'loginService'];
-
 
 mainModule.component('login', {
     templateUrl: './login.html',

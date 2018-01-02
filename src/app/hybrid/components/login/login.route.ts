@@ -3,9 +3,8 @@ import { mainModule } from '../index.module';
 
 mainModule.config(routerConfig);
 
-
 function routerConfig($stateProvider) {
-    var login = {
+    const login = {
         name: 'login',
         url: '/login',
         component: 'login'

@@ -3,7 +3,7 @@ import { mainModule } from '../index.module';
 
 mainModule.factory('loginService', loginService);
 
-function loginService($http, $q, $timeout/*, config*/) {
+function loginService($http, $q, $timeout) {
 
     const service = {
         login: login
